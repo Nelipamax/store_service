@@ -1,7 +1,9 @@
 package ru.aston.store_service.service;
 
-import org.springframework.stereotype.Service;
+import ru.aston.store_service.dto.GoodsDto;
 
-@Service
-public class GoodsService {
+import java.util.List;
+
+public interface GoodsService {
+    List<GoodsDto> getGoodsFromStore(Long id);
 }

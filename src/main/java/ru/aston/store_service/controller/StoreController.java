@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.aston.store_service.dto.GoodsDto;
 import ru.aston.store_service.dto.OrderDto;
 import ru.aston.store_service.dto.StoreDto;
+import ru.aston.store_service.service.StoreService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.List;
 @RestController(value = "/stores")
 public class StoreController {
 
+    private final StoreService service;
+
     @GetMapping
     public List<StoreDto> getStores() {
-        return null;
+        return service.getStores();
     }
 
     @GetMapping(value = "/{storeId}/goods")
@@ -28,5 +31,9 @@ public class StoreController {
     public OrderDto createOrder(@RequestParam List<GoodsDto> goods,
                                 @RequestParam LocalDateTime deliveryTime) {
         return null;
+    }
+
+    public StoreController(StoreService service) {
+        this.service = service;
     }
 }
