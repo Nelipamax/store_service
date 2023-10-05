@@ -1,5 +1,6 @@
 package ru.aston.store_service.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.aston.store_service.dto.StoreDto;
 import ru.aston.store_service.mapper.StoreMapper;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StoreServiceImpl implements StoreService {
     
     private final StoreRepository repository;
@@ -25,9 +27,5 @@ public class StoreServiceImpl implements StoreService {
         }
 
         return stores;
-    }
-
-    public StoreServiceImpl(StoreRepository repository) {
-        this.repository = repository;
     }
 }
