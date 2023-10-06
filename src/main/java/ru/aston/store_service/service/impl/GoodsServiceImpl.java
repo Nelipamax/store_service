@@ -12,11 +12,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GoodsServiceImpl implements GoodsService {
 
-    private final GoodsServiceClient client;
+    private final GoodsServiceClient goodsServiceClient;
 
     @Override
     public List<GoodsDto> getGoodsFromStore(Long id) {
+        return goodsServiceClient.getAllGoodsFromStoreWithId(id);
+    }
 
-        return client.goods(id);
+    @Override
+    public Integer reduceQuantity(List<GoodsDto> goodDtoList) {
+        return goodsServiceClient.reduceQuantities(goodDtoList).getBody();
     }
 }

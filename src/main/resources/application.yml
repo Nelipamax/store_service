@@ -1,4 +1,9 @@
+server:
+  port: 8081
+
 spring:
+  profiles:
+    active: local
   datasource:
     driver-class-name: org.postgresql.Driver
     username: test
@@ -7,3 +12,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+feign:
+  url:
+    goods: localhost:8080
