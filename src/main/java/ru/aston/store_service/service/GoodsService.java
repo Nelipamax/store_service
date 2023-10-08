@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GoodsService {
     List<GoodsDto> getGoodsFromStore(Long id);
+
+    Integer reduceQuantity(List<GoodsDto> goodDtoList);
 }

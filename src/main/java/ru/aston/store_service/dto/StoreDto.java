@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StoreDto {
 
-    private long id;
+    private Long id;
 
     private String name;
+
 }
 

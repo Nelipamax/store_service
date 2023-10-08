@@ -4,12 +4,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 public class GoodsDto {
+    private UUID productId;
 
-    private Long productId;
+    private int storeId;
 
     private String name;
 
