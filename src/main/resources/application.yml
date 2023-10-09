@@ -6,12 +6,15 @@ spring:
     active: local
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: test
-    password: test
-    url: jdbc:postgresql://localhost:5432/test
+    username: super_admin
+    password: SomeSecretPassword
+    url: jdbc:postgresql://localhost:5432/postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+
+  liquibase:
+    change-log: "classpath:db/changelog/master.yml"
 
 feign:
   url:
