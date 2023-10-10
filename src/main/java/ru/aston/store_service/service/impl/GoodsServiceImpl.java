@@ -20,7 +20,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Integer reduceQuantity(List<GoodsDto> goodDtoList) {
-        return goodsServiceClient.reduceQuantities(goodDtoList).getBody();
+    public Integer reduceQuantity(List<GoodsDto> goodsDtoList) {
+        return goodsServiceClient.reduceQuantities(goodsDtoList).getBody();
     }
 }

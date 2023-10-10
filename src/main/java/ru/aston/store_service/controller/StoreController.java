@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.aston.store_service.dto.GoodsDto;
-import ru.aston.store_service.dto.OrderDto;
+import ru.aston.store_service.dto.OrderRequestDto;
+import ru.aston.store_service.dto.PaymentDto;
 import ru.aston.store_service.dto.StoreDto;
 import ru.aston.store_service.service.GoodsService;
 import ru.aston.store_service.service.OrderService;
@@ -44,10 +45,23 @@ public class StoreController {
     }
 
     @PostMapping(value = "/{storeId}/order")
-    public OrderDto createOrder(@PathVariable(value = "storeId") Long storeId,
+    public OrderRequestDto createOrder(@PathVariable(value = "storeId") Long storeId,
+                                @RequestParam Long clientId,
                                 @RequestParam List<GoodsDto> goods,
+                                @RequestParam String deliveryAddress,
                                 @RequestParam LocalDateTime deliveryTime) {
 
-        return null;
+        OrderRequestDto order = orderService.createOrderRequest(clientId, storeId, deliveryAddress, deliveryTime, goods);
+        orderService.sendToOrderService(order);
+
+        return order;
+    }
+
+    @PostMapping("/payments")
+    public String getPaymentBill(@RequestParam PaymentDto bill) {
+
+        orderService.sendPaymentBillToOrderService(bill);
+
+        return "Чек об оплате успешно принят";
     }
 }

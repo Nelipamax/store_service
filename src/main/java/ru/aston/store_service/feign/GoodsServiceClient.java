@@ -13,11 +13,13 @@ import java.util.List;
 
 @FeignClient(name = "goods", url = "${feign.url.goods}")
 public interface GoodsServiceClient {
+
     @GetMapping(value = "/goods/{storeId}")
     List<GoodsDto> getAllGoodsFromStoreWithId(@PathVariable Long storeId);
 
     @PostMapping(value = "/goods{storeId}")
     boolean sendPayedOrder(@PathVariable(value = "storeId") Long storeId, OrderDto order);
+
     @PostMapping(value = "/goods")
     ResponseEntity<Integer> reduceQuantities(@RequestBody List<GoodsDto> goodsDtoList);
 }
