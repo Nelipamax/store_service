@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-store-Data
+      author: ephyl
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  header: store_id
+                  name: id
+                  type: numeric
+              - column:
+                  header: name
+                  name: name
+                  type: varchar
+            commentLineStartsWith: //
+            encoding: UTF-8
+            file: db/changelog/data/dataSourceFile.csv
+            schemaName: public
+            separator: ;
+            tableName: store
+            usePreparedStatements: true
