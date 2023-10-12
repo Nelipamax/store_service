@@ -53,7 +53,7 @@ public class StoreController {
 
         OrderRequestDto order = orderService.createOrderRequest(clientId, storeId, deliveryAddress, deliveryTime, goods);
         orderService.sendToOrderService(order);
-
+        orderService.sendToPaymentMockService(order);
         return order;
     }
 

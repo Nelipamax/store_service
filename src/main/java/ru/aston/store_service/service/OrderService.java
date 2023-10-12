@@ -12,4 +12,5 @@ public interface OrderService {
     String sendToOrderService(OrderRequestDto order);
     String sendToPaymentService();
     String sendPaymentBillToOrderService(PaymentDto bill);
+    public String sendToPaymentMockService(OrderRequestDto order);
 }

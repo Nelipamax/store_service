@@ -6,6 +6,7 @@ import ru.aston.store_service.dto.GoodsDto;
 import ru.aston.store_service.dto.OrderRequestDto;
 import ru.aston.store_service.dto.PaymentDto;
 import ru.aston.store_service.feign.OrderServiceClient;
+import ru.aston.store_service.feign.PaymentMock;
 import ru.aston.store_service.feign.PaymentServiceClient;
 import ru.aston.store_service.service.OrderService;
 
@@ -22,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderServiceClient orderServiceClient;
     private final PaymentServiceClient paymentServiceClient;
+    private final PaymentMock paymentMock;
 
     @Override
     public OrderRequestDto createOrderRequest(Long clientId, Long storeId, String deliveryAddress, LocalDateTime deliveryTime, List<GoodsDto> goods) {
@@ -44,6 +46,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public String sendToPaymentService() {
         return null;
+    }
+
+    @Override
+    public String sendToPaymentMockService(OrderRequestDto order) {
+        return paymentMock.sendPaymentRequest(new PaymentDto(order.id(), false, BigDecimal.valueOf(order.totalPrice())));
     }
 
     @Override
