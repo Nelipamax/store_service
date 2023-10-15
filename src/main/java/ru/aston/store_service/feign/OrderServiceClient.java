@@ -8,7 +8,7 @@ import ru.aston.store_service.dto.OrderRequestDto;
 
 import java.util.UUID;
 
-@FeignClient(name = "OrderServiceClient", url = "${feign.url.OrderServiceClient}")
+@FeignClient(name = "order", url = "${feign.url.OrderServiceClient}")
 public interface OrderServiceClient {
 
     @PostMapping(value = "/api/order/create")

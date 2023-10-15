@@ -8,7 +8,7 @@ import ru.aston.store_service.dto.PaymentDto;
 
 import java.util.UUID;
 
-@FeignClient(name = "PaymentServiceClient", url = "${feign.url.PaymentServiceClient}")
+@FeignClient(name = "payment", url = "${feign.url.PaymentServiceClient}")
 public interface PaymentServiceClient {
 
     @PostMapping("/pay/{orderId}")
